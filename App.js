@@ -1,20 +1,76 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import {
+  ImageBackground,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+} from "react-native";
+import Title from "./src/components/Title";
 
-export default function App() {
+const image = {
+  uri: "/Users/halilibrahimdursun/Desktop/TutorialExpo/assets/mobileBg.jpg",
+};
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ImageBackground style={styles.container} source={image} resizeMode="cover">
+      <SafeAreaView style={{ backgroundColor: "#000000c0", flex: 1 }}>
+        <Title pageTitle="Home Page" />
+
+        <ScrollView
+          horizontal
+          pagingEnabled
+          nestedScrollEnabled
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.scroll}>
+            <View style={styles.cardArea}>
+              <Text>Veri1</Text>
+            </View>
+            <View style={styles.cardArea}>
+              <Text>Veri2</Text>
+            </View>
+            <View style={styles.cardArea}>
+              <Text>Veri3</Text>
+            </View>
+            <View style={styles.cardArea}>
+              <Text>Veri4</Text>
+            </View>
+          </View>
+        </ScrollView>
+
+        <View>
+          <Text style={{ color: "white" }}>Ürün Adı1</Text>
+          <Text style={{ color: "white" }}>Ürün Adı1</Text>
+          <Text style={{ color: "white" }}>Ürün Adı1</Text>
+          <Text style={{ color: "white" }}>Ürün Adı1</Text>
+
+          <Image />
+        </View>
+      </SafeAreaView>
+    </ImageBackground>
   );
-}
+};
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  scroll: {
+    flexDirection: "row",
+  },
+  cardArea: {
+    width: 150,
+    height: 150,
+    backgroundColor: "white",
+    margin: 15,
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
