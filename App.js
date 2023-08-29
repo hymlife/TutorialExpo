@@ -1,76 +1,99 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  ImageBackground,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from "react-native";
-import Title from "./src/components/Title";
+import { StyleSheet, Text, View } from "react-native";
+import { home, profile } from "./src/screens";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { Entypo } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import UserCommend from "./src/screens/userCommend";
+import { FontAwesome5 } from "@expo/vector-icons";
+const Tab = createBottomTabNavigator();
 
-const image = {
-  uri: "/Users/halilibrahimdursun/Desktop/TutorialExpo/assets/mobileBg.jpg",
+const screenOptions = {
+  tabBarShowLabel: false,
+  headerShown: false,
+  tabBarStyle: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    left: 0,
+    elevation: 0,
+    height: 80,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingTop: 15,
+  },
 };
+
 const App = () => {
   return (
-    <ImageBackground style={styles.container} source={image} resizeMode="cover">
-      <SafeAreaView style={{ backgroundColor: "#000000c0", flex: 1 }}>
-        <Title pageTitle="Home Page" />
-
-        <ScrollView
-          horizontal
-          pagingEnabled
-          nestedScrollEnabled
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.scroll}>
-            <View style={styles.cardArea}>
-              <Text>Veri1</Text>
-            </View>
-            <View style={styles.cardArea}>
-              <Text>Veri2</Text>
-            </View>
-            <View style={styles.cardArea}>
-              <Text>Veri3</Text>
-            </View>
-            <View style={styles.cardArea}>
-              <Text>Veri4</Text>
-            </View>
-          </View>
-        </ScrollView>
-
-        <View>
-          <Text style={{ color: "white" }}>Ürün Adı1</Text>
-          <Text style={{ color: "white" }}>Ürün Adı1</Text>
-          <Text style={{ color: "white" }}>Ürün Adı1</Text>
-          <Text style={{ color: "white" }}>Ürün Adı1</Text>
-
-          <Image />
-        </View>
-      </SafeAreaView>
-    </ImageBackground>
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Screen
+          name="Home"
+          component={home}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{ justifyContent: "center", alignItems: "center" }}
+                >
+                  <Entypo
+                    name="home"
+                    size={24}
+                    color={focused ? "#16247d" : "#111"}
+                  />
+                  <Text style={{ fontSize: 20 }}>Home</Text>
+                </View>
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="User Command"
+          component={UserCommend}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{ justifyContent: "center", alignItems: "center" }}
+                >
+                  <FontAwesome5
+                    name="user-ninja"
+                    size={24}
+                    color={focused ? "#16247d" : "#111"}
+                  />
+                  <Text style={{ fontSize: 20 }}>Command</Text>
+                </View>
+              );
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={profile}
+          options={{
+            tabBarIcon: ({ focused }) => {
+              return (
+                <View
+                  style={{ justifyContent: "center", alignItems: "center" }}
+                >
+                  <AntDesign
+                    name="setting"
+                    size={24}
+                    color={focused ? "#16247d" : "#111"}
+                  />
+                  <Text style={{ fontSize: 20 }}>Setting</Text>
+                </View>
+              );
+            },
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
 export default App;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scroll: {
-    flexDirection: "row",
-  },
-  cardArea: {
-    width: 150,
-    height: 150,
-    backgroundColor: "white",
-    margin: 15,
-    borderRadius: 15,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const styles = StyleSheet.create({});

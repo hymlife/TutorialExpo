@@ -16,9 +16,9 @@ import { Entypo } from "@expo/vector-icons";
 import Title from "../components/Title";
 
 const image = {
-  uri: "/Users/halilibrahimdursun/Desktop/TutorialExpo/assets/mobileBg.jpg",
+  uri: "https://designimages.appypie.com/appbackground/appbackground-98-nature-outdoors.jpg",
 };
-const profile = () => {
+const Profile = () => {
   return (
     <ImageBackground style={styles.container} source={image} resizeMode="cover">
       <SafeAreaView
@@ -32,7 +32,7 @@ const profile = () => {
           <Image
             style={styles.image}
             source={{
-              uri: "https://halilibrahimdursun.com.tr/wp-content/uploads/2023/05/IMG_7418-scaled.jpg",
+              uri: "https://media.licdn.com/dms/image/D4D03AQHMmcQk0VnmhQ/profile-displayphoto-shrink_800_800/0/1690892870871?e=2147483647&v=beta&t=Pvhl47tmW4FLGRaREN-YHcE_06AvfhNVKGXox40WbSA",
             }}
           />
 
@@ -76,7 +76,7 @@ const profile = () => {
     </ImageBackground>
   );
 };
-export default profile;
+export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
